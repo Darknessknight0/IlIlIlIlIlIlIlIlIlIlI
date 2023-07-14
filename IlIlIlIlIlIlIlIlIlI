@@ -207,17 +207,20 @@ local function LoadLoader()
         end)
 
         -- find game here
-        task.delay(3, function()
-            if (game and game.PlaceId == 8821374215) then -- Saisei loader
-                is_Loaded = true
-                TextLabel.Text = "Loading Saisei.lua"
-                task.delay(2, function()
-                    loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5593/20447/Saisei.lua'))()
-                    INIT:Destroy()
-                end)
-                -- LOAD THE GAME HERE
+        task.spawn(function()
+            task.delay(7, function()
+                if (game and game.PlaceId == 8821374215) then -- Saisei loader
+                    is_Loaded = true
+                    TextLabel.Text = "Loading Saisei.lua"
+                    task.delay(3, function()
+                        loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5593/20447/Saisei.lua'))()
+                        INIT:Destroy()
+                    end)
+                else
+                    print("incorrect game.")
+                end
 
-            end
+            end)
         end)
     end
 end
